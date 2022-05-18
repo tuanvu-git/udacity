@@ -12,8 +12,8 @@ In YAML code, the `${EnvironmentName}` would be substituted with `UdacityProject
 
 ###  STUDENT NOTE
 1.  I split cloudformation into 2 files (server.yml, network.yml) instead of merge into 1 file (final-project-starter.yml)
-2.  because using S3 inside EC2 instance is optional so I skip this step and don't need to create IAM
+2.  because using S3 inside EC2 instance is optional so I skipped this step and don't need to create IAM
 3.  In Project Requirements "server specs" have scenario
 "You'll need two vCPUs and at least 4GB of RAM. The Operating System to be used is Ubuntu 18. So, choose an Instance size and Machine Image (AMI) that best fits this spec."
-but for low charging, I setuped EC2 instance type and instance Number don't meed requirement
+but for low charging, I set up EC2 instance type and instance Number don't meed requirement
 4.  I used my docker image to run in EC2 (see UserData in LaunchConfiguration) instead of copying file HTML into EC2
