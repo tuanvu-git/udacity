@@ -11,9 +11,9 @@ Students may use a JSON file for increasing the generic nature of the YAML code.
 In YAML code, the `${EnvironmentName}` would be substituted with `UdacityProject` accordingly.
 
 ###  STUDENT NOTE
-1.  I split cloudformation into 2 files (server.yml, network.yml) instead of merge into 1 file (final-project-starter.yml)
-2.  because using S3 inside EC2 instance is optional so I skipped this step and don't need to create IAM
-3.  In Project Requirements "server specs" have scenario
+1.  because using S3 inside EC2 instance is optional so I skipped this step and don't need to create IAM
+2.  In Project Requirements "server specs" have scenario
 "You'll need two vCPUs and at least 4GB of RAM. The Operating System to be used is Ubuntu 18. So, choose an Instance size and Machine Image (AMI) that best fits this spec."
 but for low charging, I set up EC2 instance type and instance Number don't meed requirement
-4.  I used my docker image to run in EC2 (see UserData in LaunchConfiguration) instead of copying file HTML into EC2
+3.  I used my docker image to run in EC2 (see UserData in LaunchConfiguration) instead of copying file HTML into EC2
+4.  DNS_NAME of load balancer: ...
