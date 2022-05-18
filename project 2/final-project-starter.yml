@@ -270,7 +270,7 @@ Resources:
     WebAppGroup:
       Type: AWS::AutoScaling::AutoScalingGroup
       Properties:
-        VPCZoneIdentifier: !Join [ ",", [ !Ref PrivateSubnet1, !Ref PrivateSubnet2 ]]
+        VPCZoneIdentifier: [ !Ref PrivateSubnet1, !Ref PrivateSubnet2 ]
         LaunchConfigurationName:
           Ref: WebAppLaunchConfig
         # for low cost charging so I only created 1 instance
