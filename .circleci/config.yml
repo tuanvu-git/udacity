@@ -7,37 +7,30 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 jobs:
-  print_hello:
+  save_hello_world:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo hello
-  print_world:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo world
-  print_my_name:
+      - run: echo "hello world" >> ~/output.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - output.txt
+  print_output_file:
     docker:
       - image: cimg/base:2020.01
     steps:
-      - checkout
-      - run: 
-          name: "echo an env variable"
-          command: |
-            echo $MY_NAME
-  
+      - attach_workspace:
+          at: ~/
+      -  run: cat ~/output.txt
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   exe2-env:
     jobs:
       - welcome/run
-      - print_hello
-      - print_world:
+      - save_hello_world
+      - print_output_file:
           requires:
-            - print_hello
-      - print_my_name:
-          requires:
-            - print_world
+            - save_hello_world
 
