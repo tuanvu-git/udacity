@@ -21,12 +21,16 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo MY_NAME
+      - checkout
+      - run: 
+          name: "echo an env variable"
+          command: |
+            echo $MY_NAME
   
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  welcome:
+  exe2-env:
     jobs:
       - welcome/run
       - print_hello
