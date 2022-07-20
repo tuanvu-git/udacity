@@ -37,5 +37,9 @@ workflows:
   exe21-env:
     jobs:
       - build
-      - test
-      - analyze
+      - test:
+          requires:
+            - build
+      - analyze:
+          requires:
+            - test
