@@ -9,7 +9,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: cd "/project_3" && npm i
+      - run: dir && cd "/project_3" && npm i
       - save_cache:
           key: "package-node"
           paths: 
