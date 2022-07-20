@@ -2,35 +2,20 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-# Use a package of configuration called an orb.
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
+commands:
+  print_pipeline_id:
+    steps:
+      - run: echo $CIRCLE_WORKFLOW_ID
+
 jobs:
-  save_hello_world:
-    docker:
-      - image: circleci/node:13.8.0
+  print_job:
+    # docker:
+    #   - image: circleci/node:13.8.0
     steps:
-      - run: echo "hello world" >> ~/output.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - output.txt
-  print_output_file:
-    docker:
-      - image: cimg/base:2020.01
-    steps:
-      - attach_workspace:
-          at: ~/
-      -  run: cat ~/output.txt
+      - print_pipeline_id
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  exe2-env:
+  exe5-env:
     jobs:
-      - welcome/run
-      - save_hello_world
-      - print_output_file:
-          requires:
-            - save_hello_world
-
+      - print_job
